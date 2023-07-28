@@ -1,3 +1,31 @@
 <resources>
     <string name="app_name">MelodyCastle</string>
+    <string name="action_sign_in">Sign in</string>
+    <string name="action_register">Sign Up</string>
+    <string name="action_update">Update</string>
+    <string name="action_profile">My Profile</string>
+    <string name="action_forgot">Forgot Password</string>
+    <string name="action_forgot_send">Send</string>
+    <string name="action_sign_in_short">Sign in</string>
+    <string name="action_verify">Verify Code</string>
+    <string name="action_verify_short">Verify</string>
+    <string name="action_result">Result</string>
+    <string name="action_settings">Logout</string>
+    <string name="tab_chapters">Chapters</string>
+    <string name="tab_options">Options</string>
+    <string name="prompt_uname">User name</string>
+    <string name="prompt_email">Email</string>
+    <string name="prompt_password">Password</string>
+    <string name="prompt_newpassword">New password</string>
+    <string name="prompt_confirm_password">Confirm password</string>
+    <string name="prompt_verifycode">Type a verify code in your email</string>
+    <string name="error_invalid_email">This email address is invalid</string>
+    <string name="error_invalid_user">Invalid User!</string>
+    <string name="error_already_email">There already exists a user for this email.</string>
+    <string name="error_invalid_password">This password is too short</string>
+    <string name="error_invalid_confirm_password">The password is not equal to confirm password</string>
+    <string name="error_invalid_vcode">This verify code is invalid</string>
+    <string name="error_incorrect_password">This password is incorrect</string>
+    <string name="error_field_required">This field is required</string>
+    <string name="permission_rationale">"Contacts permissions are needed for providing email completions."</string>
 </resources>
