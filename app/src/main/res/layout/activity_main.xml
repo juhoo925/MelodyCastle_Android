@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -7,209 +7,241 @@
     android:orientation="vertical"
     tools:context=".MainActivity">
 
-    <RelativeLayout
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="1.0">
-        <ImageView
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:src="@drawable/chapter_bg"
-            android:scaleType="centerCrop"
-            tools:ignore="ContentDescription">
-        </ImageView>
-        <LinearLayout
-            android:id="@+id/viewChapters"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:orientation="vertical"
-            android:gravity="center"
-            android:background="@color/colorTransparent"
-            android:visibility="visible">
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:gravity="center"
-                android:orientation="horizontal"
-                android:padding="20dp">
-
-                <ImageButton
-                    android:id="@+id/btnChapter1"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginRight="40dp"
-                    android:background="@drawable/btn_chapter1"
-                    tools:ignore="ContentDescription,RtlHardcoded,SpeakableTextPresentCheck" />
-
-                <ImageButton
-                    android:id="@+id/btnChapter2"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="40dp"
-                    android:background="@drawable/btn_chapter2"
-                    tools:ignore="ContentDescription,ImageContrastCheck,RtlHardcoded,SpeakableTextPresentCheck" />
-            </LinearLayout>
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:gravity="center"
-                android:orientation="horizontal"
-                android:padding="20dp">
-
-                <ImageButton
-                    android:id="@+id/btnChapter3"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginRight="40dp"
-                    android:background="@drawable/btn_chapter3"
-                    tools:ignore="ContentDescription,RtlHardcoded,SpeakableTextPresentCheck" />
-
-                <ImageButton
-                    android:id="@+id/btnChapter4"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="40dp"
-                    android:background="@drawable/btn_chapter4"
-                    tools:ignore="ContentDescription,ImageContrastCheck,RtlHardcoded,SpeakableTextPresentCheck" />
-            </LinearLayout>
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:gravity="center"
-                android:orientation="horizontal"
-                android:padding="20dp">
-                <ImageButton
-                    android:id="@+id/btnChapter5"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:background="@drawable/btn_chapter5"
-                    android:layout_marginEnd="40dp"
-                    android:importantForAccessibility="no" />
-                <ImageButton
-                    android:id="@+id/btnChapter6"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:background="@drawable/btn_chapter6"
-                    android:layout_marginStart="40dp"
-                    android:importantForAccessibility="no" />
-            </LinearLayout>
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:gravity="center"
-                android:orientation="horizontal"
-                android:padding="20dp">
-                <ImageButton
-                    android:id="@+id/btnChapter7"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:background="@drawable/btn_chapter7"
-                    android:layout_marginEnd="40dp"
-                    android:importantForAccessibility="no" />
-                <ImageButton
-                    android:id="@+id/btnKaraoke"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:background="@drawable/btn_karaoke"
-                    android:layout_marginStart="40dp"
-                    android:importantForAccessibility="no" />
-            </LinearLayout>
-        </LinearLayout>
-        <LinearLayout
-            android:id="@+id/viewOptions"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:orientation="vertical"
-            android:gravity="center"
-            android:background="@color/colorTransparent"
-            android:visibility="gone">
-            <LinearLayout
-                android:layout_marginTop="20dp"
-                android:layout_marginBottom="20dp"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:gravity="center">
-                <ImageButton
-                    android:id="@+id/btnUpload"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:background="@drawable/btn_loadvideo"
-                    tools:ignore="SpeakableTextPresentCheck"
-                    android:importantForAccessibility="no" />
-            </LinearLayout>
-            <LinearLayout
-                android:layout_marginTop="20dp"
-                android:layout_marginBottom="20dp"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:gravity="center">
-                <ImageButton
-                    android:id="@+id/btnProfile"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:background="@drawable/btn_profile"
-                    tools:ignore="ImageContrastCheck,SpeakableTextPresentCheck"
-                    android:importantForAccessibility="no" />
-            </LinearLayout>
-            <LinearLayout
-                android:layout_marginTop="20dp"
-                android:layout_marginBottom="20dp"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:gravity="center">
-                <ImageButton
-                    android:id="@+id/btnLogout"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:background="@drawable/btn_logout"
-                    tools:ignore="SpeakableTextPresentCheck"
-                    android:importantForAccessibility="no" />
-            </LinearLayout>
-        </LinearLayout>
-    </RelativeLayout>
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="80dp"
-        android:orientation="horizontal"
-        android:background="@color/colorPrimary"
-        android:baselineAligned="false">
-        <LinearLayout
-            android:layout_width="0dp"
-            android:layout_weight="0.5"
-            android:layout_height="match_parent"
-            android:gravity="center"
-            android:orientation="horizontal">
-            <TextView
-                android:id="@+id/txtChapters"
+        android:layout_height="match_parent"
+        android:gravity="center"
+        android:orientation="vertical">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1.0">
+
+            <ImageView
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:gravity="center"
-                android:text="Chapters"
-                android:textColor="@color/white"
-                android:textSize="24sp"
-                android:textStyle="bold"
-                android:background="@color/brown"
-                tools:ignore="HardcodedText" />
-        </LinearLayout>
-        <LinearLayout
-            android:layout_width="0dp"
-            android:layout_weight="0.5"
-            android:layout_height="match_parent"
-            android:gravity="center"
-            android:orientation="horizontal">
-            <TextView
-                android:id="@+id/txtOptions"
+                android:scaleType="centerCrop"
+                android:src="@drawable/chapter_bg"
+                tools:ignore="ContentDescription,ImageContrastCheck,ImageContrastCheck,ImageContrastCheck"></ImageView>
+
+            <ScrollView
+                android:id="@+id/viewChapters"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
+                android:visibility="visible"
+                tools:ignore="SpeakableTextPresentCheck,SpeakableTextPresentCheck,SpeakableTextPresentCheck,SpeakableTextPresentCheck,SpeakableTextPresentCheck">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@color/colorTransparent"
+                    android:gravity="center"
+                    android:orientation="vertical">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:gravity="center"
+                        android:orientation="horizontal"
+                        android:padding="20dp">
+
+                        <ImageButton
+                            android:id="@+id/btnChapter1"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginRight="40dp"
+                            android:background="@drawable/btn_chapter1"
+                            tools:ignore="ContentDescription,RtlHardcoded,SpeakableTextPresentCheck,ImageContrastCheck" />
+
+                        <ImageButton
+                            android:id="@+id/btnChapter2"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="40dp"
+                            android:background="@drawable/btn_chapter2"
+                            tools:ignore="ContentDescription,ImageContrastCheck,RtlHardcoded,SpeakableTextPresentCheck" />
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:gravity="center"
+                        android:orientation="horizontal"
+                        android:padding="20dp">
+
+                        <ImageButton
+                            android:id="@+id/btnChapter3"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginRight="40dp"
+                            android:background="@drawable/btn_chapter3"
+                            tools:ignore="ContentDescription,RtlHardcoded,SpeakableTextPresentCheck" />
+
+                        <ImageButton
+                            android:id="@+id/btnChapter4"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="40dp"
+                            android:background="@drawable/btn_chapter4"
+                            tools:ignore="ContentDescription,ImageContrastCheck,RtlHardcoded,SpeakableTextPresentCheck" />
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:gravity="center"
+                        android:orientation="horizontal"
+                        android:padding="20dp">
+
+                        <ImageButton
+                            android:id="@+id/btnChapter5"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginEnd="40dp"
+                            android:background="@drawable/btn_chapter5"
+                            android:importantForAccessibility="no"
+                            tools:ignore="ImageContrastCheck" />
+
+                        <ImageButton
+                            android:id="@+id/btnChapter6"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="40dp"
+                            android:background="@drawable/btn_chapter6"
+                            android:importantForAccessibility="no"
+                            tools:ignore="ImageContrastCheck" />
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:gravity="center"
+                        android:orientation="horizontal"
+                        android:padding="20dp">
+
+                        <ImageButton
+                            android:id="@+id/btnChapter7"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginEnd="40dp"
+                            android:background="@drawable/btn_chapter7"
+                            android:importantForAccessibility="no" />
+
+                        <ImageButton
+                            android:id="@+id/btnKaraoke"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="40dp"
+                            android:background="@drawable/btn_karaoke"
+                            android:importantForAccessibility="no" />
+                    </LinearLayout>
+                </LinearLayout>
+            </ScrollView>
+            <LinearLayout
+                android:id="@+id/viewOptions"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@color/colorTransparent"
                 android:gravity="center"
-                android:text="Options"
-                android:textColor="@color/white"
-                android:textSize="24sp"
-                android:textStyle="bold"
-                android:background="@color/brownlight"
-                tools:ignore="HardcodedText" />
+                android:orientation="vertical"
+                android:visibility="gone">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="20dp"
+                    android:layout_marginBottom="20dp"
+                    android:gravity="center">
+
+                    <ImageButton
+                        android:id="@+id/btnload"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:background="@drawable/btn_loadvideo"
+                        android:importantForAccessibility="no"
+                        tools:ignore="SpeakableTextPresentCheck" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="20dp"
+                    android:layout_marginBottom="20dp"
+                    android:gravity="center"
+                    android:visibility="gone">
+
+                    <ImageButton
+                        android:id="@+id/btnProfile"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:background="@drawable/btn_profile"
+                        android:importantForAccessibility="no"
+                        tools:ignore="ImageContrastCheck,SpeakableTextPresentCheck" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="20dp"
+                    android:layout_marginBottom="20dp"
+                    android:gravity="center"
+                    android:visibility="gone">
+
+                    <ImageButton
+                        android:id="@+id/btnLogout"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:background="@drawable/btn_logout"
+                        android:importantForAccessibility="no"
+                        tools:ignore="SpeakableTextPresentCheck" />
+                </LinearLayout>
+            </LinearLayout>
+        </RelativeLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="80dp"
+            android:orientation="horizontal"
+            android:background="@color/colorPrimary"
+            android:baselineAligned="false">
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_weight="0.5"
+                android:layout_height="match_parent"
+                android:gravity="center"
+                android:orientation="horizontal">
+                <TextView
+                    android:id="@+id/txtChapters"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:gravity="center"
+                    android:text="Chapters"
+                    android:textColor="@color/white"
+                    android:textSize="24sp"
+                    android:textStyle="bold"
+                    android:background="@color/brown"
+                    tools:ignore="HardcodedText" />
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_weight="0.5"
+                android:layout_height="match_parent"
+                android:gravity="center"
+                android:orientation="horizontal">
+                <TextView
+                    android:id="@+id/txtOptions"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:gravity="center"
+                    android:text="Options"
+                    android:textColor="@color/white"
+                    android:textSize="24sp"
+                    android:textStyle="bold"
+                    android:background="@color/brownlight"
+                    tools:ignore="HardcodedText" />
+            </LinearLayout>
         </LinearLayout>
+
     </LinearLayout>
 
-
-</LinearLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>

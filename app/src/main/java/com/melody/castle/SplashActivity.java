@@ -12,9 +12,17 @@ public class SplashActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_splash);
 
+        isActivityRunning = true;
         run();
     }
 
+    @Override
+    protected void onDestroy() {
+        isActivityRunning = false;
+        super.onDestroy();
+    }
+
+    private boolean isActivityRunning = false;
     public void run() {
 
         Thread aThread = new Thread(new Runnable() {
@@ -23,10 +31,10 @@ public class SplashActivity extends AppCompatActivity {
             public void run() {
                 // TODO Auto-generated method stub
                 int nCount = 0;
-                while(true) {
+                while(isActivityRunning) {
 
                     if ( nCount > 2 ) {
-                        Intent i = new Intent( SplashActivity.this, LoginActivity.class);
+                        Intent i = new Intent( SplashActivity.this, MainActivity.class);
                         startActivity(i);
                         finish();
                         break;
