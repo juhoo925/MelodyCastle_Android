@@ -44,31 +44,31 @@ public class PlayVideoActivity extends AppCompatActivity {
     int selCh7Id = 1;
 
     int[] pauseTime;
-    int[] pauseTime1 = {93, 109, 131, 140};
-    int[] pauseTime2 = {165, 293, 390};
-    int[] pauseTime3 = {97, 250, 326};
+    int[] pauseTime1 = {93, 109, 132, 142};
+    int[] pauseTime2 = {166, 295, 392};
+    int[] pauseTime3 = {96, 254, 330};
     int[] pauseTime4 = {16, 255};
-    int[] pauseTime5 = {49, 144, 217};
+    int[] pauseTime5 = {49, 145, 219};
     int[] pauseTime6 = {};
-    int[] pauseTime7 = {27};
+    int[] pauseTime7 = {26};
 
     int[] replayTime;
-    int[] replayTime1 = {416};
-    int[] replayTime2 = {160, 555};
-    int[] replayTime3 = {212};
-    int[] replayTime4 = {107};
+    int[] replayTime1 = {418};
+    int[] replayTime2 = {159, 559};
+    int[] replayTime3 = {210};
+    int[] replayTime4 = {108};
     int[] replayTime5 = {344};
     int[] replayTime6 = {};
-    int[] replayTime7 = {159};
+    int[] replayTime7 = {160};
 
     int[] replayStartTime;
     int[] replayStartTime1 = {342};
-    int[] replayStartTime2 = {71, 485};
-    int[] replayStartTime3 = {114};
-    int[] replayStartTime4 = {87};
+    int[] replayStartTime2 = {76, 492};
+    int[] replayStartTime3 = {115};
+    int[] replayStartTime4 = {88};
     int[] replayStartTime5 = {265};
     int[] replayStartTime6 = {};
-    int[] replayStartTime7 = {115};
+    int[] replayStartTime7 = {118};
 
     int nReplayIndex = 0;
 
@@ -134,6 +134,9 @@ public class PlayVideoActivity extends AppCompatActivity {
                         mVideoView.setVideoURI(mUriPath);
                         mVideoView.requestFocus();
                         mVideoView.start();
+                        if ( selCh7Id == 3 ) {
+                            mHandler.sendEmptyMessageDelayed(3, 2000);
+                        }
                     }
                 }
             }
@@ -172,12 +175,19 @@ public class PlayVideoActivity extends AppCompatActivity {
         mBtnReplay.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View view) {
-                if ( mVideoView.isPlaying() == false ) {
+                mViewControl.setVisibility(View.GONE);
+                if ( nChapterId == 7 && selCh7Id == 3 ) {
+                    selCh7Id = 2;
+                    mUriPath = mUriAddPath;
+                    mVideoView.setVideoURI(mUriPath);
+                    mVideoView.requestFocus();
+                    mVideoView.start();
+                }
+                else if ( mVideoView.isPlaying() == false ) {
                     nCount = replayStartTime[nReplayIndex];
                     mVideoView.seekTo(replayStartTime[nReplayIndex] * 1000 );
                     mVideoView.start();
                 }
-                mViewControl.setVisibility(View.GONE);
             }
         });
 
@@ -253,6 +263,12 @@ public class PlayVideoActivity extends AppCompatActivity {
     @Override
     protected void onDestroy() {
         isActivityRunning = false;
+        try {
+            if ( mVideoView.isPlaying() ) {
+                mVideoView.stopPlayback();
+            }
+        } catch ( Exception ex) {
+        }
         super.onDestroy();
     }
 
@@ -266,6 +282,7 @@ public class PlayVideoActivity extends AppCompatActivity {
                 // TODO Auto-generated method stub
                 while(isActivityRunning) {
 
+//                    int playPosition = mVideoView.getCurrentPosition()/1000;
                     if ( mVideoView.isPlaying() == false ) {
 
                     }
@@ -308,12 +325,16 @@ public class PlayVideoActivity extends AppCompatActivity {
                 mVideoView.pause();
                 mBtnTopNext.setVisibility(View.VISIBLE);
             }
+            else if ( msg.what == 1 ) {
+                finish();
+            }
             else if ( msg.what == 2 ) {
                 mVideoView.pause();
                 mViewControl.setVisibility(View.VISIBLE);
             }
-            else if ( msg.what == 1 ) {
-                finish();
+            else if ( msg.what == 3 ) {
+                mVideoView.pause();
+                mViewControl.setVisibility(View.VISIBLE);
             }
             return false;
         }

@@ -154,13 +154,7 @@ public class MainActivity extends AppCompatActivity {
         editor.putString("default", file3.getPath());
         editor.commit();
 
-        try {
-            mediaPlayer = MediaPlayer.create(this, R.raw.background_music);
-            mediaPlayer.setLooping(true);
-            mediaPlayer.start();
-        } catch (Exception e) {
-            throw new RuntimeException(e);
-        }
+
     }
 
     @Override
@@ -171,15 +165,20 @@ public class MainActivity extends AppCompatActivity {
         }
         super.onPause();
     }
+
     @Override
-    protected void onResume() {
+    protected void onStart() {
 
-        if ( mediaPlayer != null && mediaPlayer.isPlaying() == false ) {
+        try {
+            mediaPlayer = MediaPlayer.create(this, R.raw.background_music);
+            mediaPlayer.setLooping(true);
             mediaPlayer.start();
+        } catch (Exception e) {
+            throw new RuntimeException(e);
         }
-        super.onResume();
-    }
 
+        super.onStart();
+    }
     private void gotoPlayVideo(int id) {
         Intent i = new Intent( MainActivity.this, PlayVideoActivity.class);
         i.putExtra("c_id", id);

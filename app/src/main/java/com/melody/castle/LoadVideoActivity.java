@@ -129,7 +129,7 @@ public class LoadVideoActivity extends AppCompatActivity {
                 // Show an explanation to the user *asynchronously* -- don't block
                 // this thread waiting for the user's response! After the user
                 // sees the explanation, try again to request the permission.
-                Toast.makeText(getApplicationContext(), "try again to request the permission.", Toast.LENGTH_LONG).show();
+//                Toast.makeText(getApplicationContext(), "try again to request the permission.", Toast.LENGTH_LONG).show();
             } else {
                 // No explanation needed; request the permission
                 ActivityCompat.requestPermissions(this,
@@ -140,11 +140,11 @@ public class LoadVideoActivity extends AppCompatActivity {
                 // PERMISSIONS_WRITE_EXTERNAL_CODE is an
                 // app-defined int constant. The callback method gets the
                 // result of the request.
-                Toast.makeText(getApplicationContext(), "result of the request", Toast.LENGTH_LONG).show();
+//                Toast.makeText(getApplicationContext(), "result of the request", Toast.LENGTH_LONG).show();
             }
         } else {
             // Permission has already been granted
-            Toast.makeText(getApplicationContext(), "Permission has already been granted!!", Toast.LENGTH_LONG).show();
+//            Toast.makeText(getApplicationContext(), "Permission has already been granted!!", Toast.LENGTH_LONG).show();
         }
     }
 
