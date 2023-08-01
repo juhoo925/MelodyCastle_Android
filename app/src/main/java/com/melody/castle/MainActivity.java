@@ -8,7 +8,11 @@ import android.content.SharedPreferences;
 import android.content.res.AssetManager;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
+import android.media.AudioAttributes;
 import android.media.Image;
+import android.media.MediaPlayer;
+import android.net.Uri;
+import android.os.Build;
 import android.os.Bundle;
 import android.os.Environment;
 import android.view.View;
@@ -16,9 +20,11 @@ import android.widget.ImageButton;
 import android.widget.LinearLayout;
 import android.widget.ScrollView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import java.io.File;
 import java.io.FileOutputStream;
+import java.io.IOException;
 import java.io.InputStream;
 
 public class MainActivity extends AppCompatActivity {
@@ -29,7 +35,9 @@ public class MainActivity extends AppCompatActivity {
     TextView mTxtChapters;
     TextView mTxtOptions;
 
+
     SharedPreferences sp;
+    MediaPlayer mediaPlayer;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -123,20 +131,53 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        String desFolderPath = Environment.getExternalStorageDirectory().getPath() + "/MelodyCastle";
-        File fp1 = new File(desFolderPath);
+        String folder = getFilesDir().getAbsolutePath() + "/MelodyCastle";
+        File fp1 = new File(folder);
         if( fp1.exists() == false ) {
             fp1.mkdir();
         }
-        copyAssetFileToSDCard( "chapter071.mp4", desFolderPath + "/chapter071.mp4");
-        copyAssetFileToSDCard( "chapter072.mp4", desFolderPath + "/chapter072.mp4");
-        copyAssetFileToSDCard( "defaultvideo.mp4", desFolderPath + "/defaultvideo.mp4");
+
+        // Storing the data in file with name as geeksData.txt
+        File file1 = new File(folder, "chapter071.mp4");
+        File file2 = new File(folder, "chapter072.mp4");
+        File file3 = new File(folder, "defaultvideo.mp4");
+
+        copyAssetFileToSDCard( "chapter071.mp4", file1.getPath());
+        copyAssetFileToSDCard( "chapter072.mp4", file2.getPath());
+        copyAssetFileToSDCard( "defaultvideo.mp4", file3.getPath());
+
+//        Toast.makeText(getApplicationContext(), "default path: " + file3.getPath(), Toast.LENGTH_LONG).show();
 
         SharedPreferences.Editor editor = sp.edit();
-        editor.putString("chapter7_1", desFolderPath + "/chapter071.mp4");
-        editor.putString("chapter7_2", desFolderPath + "/chapter072.mp4");
-        editor.putString("default", desFolderPath + "/defaultvideo.mp4");
+        editor.putString("chapter7_1", file1.getPath());
+        editor.putString("chapter7_2", file2.getPath());
+        editor.putString("default", file3.getPath());
         editor.commit();
+
+        try {
+            mediaPlayer = MediaPlayer.create(this, R.raw.background_music);
+            mediaPlayer.setLooping(true);
+            mediaPlayer.start();
+        } catch (Exception e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+    @Override
+    protected void onPause() {
+
+        if ( mediaPlayer != null && mediaPlayer.isPlaying() ) {
+            mediaPlayer.stop();
+        }
+        super.onPause();
+    }
+    @Override
+    protected void onResume() {
+
+        if ( mediaPlayer != null && mediaPlayer.isPlaying() == false ) {
+            mediaPlayer.start();
+        }
+        super.onResume();
     }
 
     private void gotoPlayVideo(int id) {

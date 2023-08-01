@@ -44,22 +44,22 @@ public class PlayVideoActivity extends AppCompatActivity {
     int selCh7Id = 1;
 
     int[] pauseTime;
-    int[] pauseTime1 = {99, 109, 132, 140};
-    int[] pauseTime2 = {165, 292, 389};
-    int[] pauseTime3 = {99, 246, 325};
-    int[] pauseTime4 = {15, 254};
-    int[] pauseTime5 = {44, 144, 217};
+    int[] pauseTime1 = {93, 109, 131, 140};
+    int[] pauseTime2 = {165, 293, 390};
+    int[] pauseTime3 = {97, 250, 326};
+    int[] pauseTime4 = {16, 255};
+    int[] pauseTime5 = {49, 144, 217};
     int[] pauseTime6 = {};
-    int[] pauseTime7 = {25};
+    int[] pauseTime7 = {27};
 
     int[] replayTime;
-    int[] replayTime1 = {415};
-    int[] replayTime2 = {161, 556};
-    int[] replayTime3 = {210};
-    int[] replayTime4 = {106};
-    int[] replayTime5 = {347};
+    int[] replayTime1 = {416};
+    int[] replayTime2 = {160, 555};
+    int[] replayTime3 = {212};
+    int[] replayTime4 = {107};
+    int[] replayTime5 = {344};
     int[] replayTime6 = {};
-    int[] replayTime7 = {160};
+    int[] replayTime7 = {159};
 
     int[] replayStartTime;
     int[] replayStartTime1 = {342};
@@ -68,7 +68,7 @@ public class PlayVideoActivity extends AppCompatActivity {
     int[] replayStartTime4 = {87};
     int[] replayStartTime5 = {265};
     int[] replayStartTime6 = {};
-    int[] replayStartTime7 = {115, 260};
+    int[] replayStartTime7 = {115};
 
     int nReplayIndex = 0;
 

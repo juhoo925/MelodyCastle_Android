@@ -1,10 +1,13 @@
 package com.melody.castle;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.app.ActivityCompat;
+import androidx.core.content.ContextCompat;
 
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.content.pm.PackageManager;
 import android.database.Cursor;
 import android.media.MediaPlayer;
 import android.net.Uri;
@@ -20,6 +23,8 @@ import android.widget.Toast;
 import android.widget.VideoView;
 
 import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
 
 public class LoadVideoActivity extends AppCompatActivity {
 
@@ -55,8 +60,13 @@ public class LoadVideoActivity extends AppCompatActivity {
         btnBrowse.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View view) {
-                Intent i = new Intent(Intent.ACTION_PICK, MediaStore.Video.Media.EXTERNAL_CONTENT_URI);
-                startActivityIfNeeded(i, REQUEST_PICK_VIDEO);
+//                Intent i = new Intent(Intent.ACTION_PICK, MediaStore.Video.Media.EXTERNAL_CONTENT_URI);
+//                startActivityIfNeeded(i, REQUEST_PICK_VIDEO);
+                Intent intent = new Intent();
+                intent.setType("video/*");
+                intent.setAction(Intent.ACTION_GET_CONTENT);
+                startActivityIfNeeded(intent, REQUEST_PICK_VIDEO);
+
             }
         });
         ImageButton btnDefault = (ImageButton) findViewById(R.id.btnDefault);
@@ -106,6 +116,48 @@ public class LoadVideoActivity extends AppCompatActivity {
                 return false;
             }
         });
+
+        // Here, thisActivity is the current activity
+        if (ContextCompat.checkSelfPermission(this,
+                android.Manifest.permission.WRITE_EXTERNAL_STORAGE)
+                != PackageManager.PERMISSION_GRANTED) {
+
+            // Permission is not granted
+            // Should we show an explanation?
+            if (ActivityCompat.shouldShowRequestPermissionRationale(this,
+                    android.Manifest.permission.WRITE_EXTERNAL_STORAGE)) {
+                // Show an explanation to the user *asynchronously* -- don't block
+                // this thread waiting for the user's response! After the user
+                // sees the explanation, try again to request the permission.
+                Toast.makeText(getApplicationContext(), "try again to request the permission.", Toast.LENGTH_LONG).show();
+            } else {
+                // No explanation needed; request the permission
+                ActivityCompat.requestPermissions(this,
+                        new String[]{android.Manifest.permission.WRITE_EXTERNAL_STORAGE,
+                                android.Manifest.permission.READ_EXTERNAL_STORAGE},
+                        PERMISSIONS_WRITE_EXTERNAL_CODE);
+
+                // PERMISSIONS_WRITE_EXTERNAL_CODE is an
+                // app-defined int constant. The callback method gets the
+                // result of the request.
+                Toast.makeText(getApplicationContext(), "result of the request", Toast.LENGTH_LONG).show();
+            }
+        } else {
+            // Permission has already been granted
+            Toast.makeText(getApplicationContext(), "Permission has already been granted!!", Toast.LENGTH_LONG).show();
+        }
+    }
+
+    public final int PERMISSIONS_WRITE_EXTERNAL_CODE = 1;
+    @Override
+    public void onRequestPermissionsResult(int requestCode, String[] permissions, int[] grantResults) {
+        super.onRequestPermissionsResult(requestCode, permissions, grantResults);
+        if (grantResults.length > 0
+                && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
+            if (requestCode == PERMISSIONS_WRITE_EXTERNAL_CODE) {
+                Toast.makeText(getApplicationContext(), "PERMISSION_GRANTED!!!", Toast.LENGTH_LONG).show();
+            }
+        }
     }
 
     @Override
@@ -116,24 +168,77 @@ public class LoadVideoActivity extends AppCompatActivity {
             switch(requestCode) {
                 case REQUEST_PICK_VIDEO:
                     Uri selectedVideo = data.getData();
-                    String[] filePathColumn = { MediaStore.Video.Media.DATA };
+                    // MEDIA GALLERY
+                    String video_path = getPath(selectedVideo);
+                    if ( video_path != null ) {
+                        String folder = getFilesDir().getAbsolutePath() + "/MelodyCastle";
+                        File fp1 = new File(folder);
+                        if( fp1.exists() == false ) {
+                            fp1.mkdir();
+                        }
+                        // Storing the data in file with name as geeksData.txt
+                        File file1 = new File(folder, "added_video.mp4");
+                        copyFileToSDCard(video_path, file1.getPath());
+                        mUriVideo = Uri.fromFile(file1);//Uri.parse(video_path);//
 
-                    Cursor cursor = getApplicationContext().getContentResolver().query(selectedVideo,
-                            filePathColumn, null, null, null);
-                    cursor.moveToFirst();
-
-                    int columnIndex = cursor.getColumnIndex(filePathColumn[0]);
-                    String video_path = cursor.getString(columnIndex);
-                    cursor.close();
-
-                    mUriVideo = Uri.fromFile(new File(video_path));
-                    mLoadStatus.setText("Custom Video Added");
-                    SharedPreferences.Editor editor = sp.edit();
-                    editor.putString("add_video", video_path);
-                    editor.commit();
+                        mLoadStatus.setText("Custom Video Added");
+                        SharedPreferences.Editor editor = sp.edit();
+                        editor.putString("add_video", video_path);
+                        editor.commit();
+                    }
                     break;
             }
         }
 
     }
+    public String getPath(Uri uri) {
+        String[] projection = { MediaStore.Video.Media.DATA };
+        Cursor cursor = getContentResolver().query(uri, projection, null, null, null);
+        if (cursor != null) {
+            // HERE YOU WILL GET A NULLPOINTER IF CURSOR IS NULL
+            // THIS CAN BE, IF YOU USED OI FILE MANAGER FOR PICKING THE MEDIA
+            int column_index = cursor.getColumnIndexOrThrow(MediaStore.Video.Media.DATA);
+            cursor.moveToFirst();
+            return cursor.getString(column_index);
+        } else
+            return null;
+    }
+
+    private void copyFileToSDCard( String path1, String sdCardFilePath ) {
+
+        FileInputStream is = null;
+        FileOutputStream fos = null;
+
+        try {
+            is = new FileInputStream(path1);
+            if( is == null ) {
+                Toast.makeText(getApplicationContext(), "is == null", Toast.LENGTH_LONG).show();
+                return;
+            }
+            fos = new FileOutputStream(sdCardFilePath);
+
+            byte buf[] = new byte[2048];
+
+            int nLen = 0;
+            while( (nLen = is.read(buf)) > -1 ) {
+                fos.write(buf, 0, nLen);
+            }
+        }
+        catch( Exception e ) {
+            Toast.makeText(getApplicationContext(), "Exception e", Toast.LENGTH_LONG).show();
+            return;
+        }
+        finally {
+            try {
+                if( is != null )
+                    is.close();
+                if( fos != null )
+                    fos.close();
+            } catch ( Exception e ) {
+                Toast.makeText(getApplicationContext(), "finally Exception e", Toast.LENGTH_LONG).show();
+            }
+        }
+    }
+
+
 }
