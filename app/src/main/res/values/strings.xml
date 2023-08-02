@@ -28,4 +28,6 @@
     <string name="error_incorrect_password">This password is incorrect</string>
     <string name="error_field_required">This field is required</string>
     <string name="permission_rationale">"Contacts permissions are needed for providing email completions."</string>
+
+    <string name="load_video_desc">Please add this under \'Load Video\'.  Why not record yourself singing some of the songs and upload the video here. You will help save Melody Castle.</string>
 </resources>

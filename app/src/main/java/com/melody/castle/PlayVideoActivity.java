@@ -44,36 +44,37 @@ public class PlayVideoActivity extends AppCompatActivity {
     int selCh7Id = 1;
 
     int[] pauseTime;
-    int[] pauseTime1 = {93, 109, 132, 142};
-    int[] pauseTime2 = {166, 295, 392};
-    int[] pauseTime3 = {96, 254, 330};
+    int[] pauseTime1 = {93, 109, 131, 140};
+    int[] pauseTime2 = {165, 293, 390};
+    int[] pauseTime3 = {97, 250, 326};
     int[] pauseTime4 = {16, 255};
     int[] pauseTime5 = {49, 145, 219};
     int[] pauseTime6 = {};
     int[] pauseTime7 = {26};
 
     int[] replayTime;
-    int[] replayTime1 = {418};
-    int[] replayTime2 = {159, 559};
+    int[] replayTime1 = {416};
+    int[] replayTime2 = {159, 554};
     int[] replayTime3 = {210};
-    int[] replayTime4 = {108};
+    int[] replayTime4 = {107};
     int[] replayTime5 = {344};
     int[] replayTime6 = {};
-    int[] replayTime7 = {160};
+    int[] replayTime7 = {159};
 
     int[] replayStartTime;
     int[] replayStartTime1 = {342};
-    int[] replayStartTime2 = {76, 492};
-    int[] replayStartTime3 = {115};
-    int[] replayStartTime4 = {88};
+    int[] replayStartTime2 = {64, 484};
+    int[] replayStartTime3 = {114};
+    int[] replayStartTime4 = {87};
     int[] replayStartTime5 = {265};
     int[] replayStartTime6 = {};
-    int[] replayStartTime7 = {118};
+    int[] replayStartTime7 = {115};
 
     int nReplayIndex = 0;
 
     int nCount = 0;
     int nChapterId = 1;
+    boolean isClickedNextBtn = false;
 
     SharedPreferences sp;
 
@@ -97,7 +98,7 @@ public class PlayVideoActivity extends AppCompatActivity {
         mVideoView = (VideoView) findViewById(R.id.videoView);
         mMediaController= new MediaController(this);
         mMediaController.setAnchorView(mVideoView);
-        mMediaController.setVisibility(View.INVISIBLE);
+//        mMediaController.setVisibility(View.INVISIBLE);
         getVideoInfo();
 
         //Setting MediaController and URI, then starting the videoView
@@ -156,7 +157,7 @@ public class PlayVideoActivity extends AppCompatActivity {
         mBtnTopNext.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View view) {
-
+                isClickedNextBtn = true;
                 if ( mVideoView.isPlaying() == false ) {
                     mVideoView.start();
                 }
@@ -167,6 +168,7 @@ public class PlayVideoActivity extends AppCompatActivity {
         mBtnNext.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View view) {
+                isClickedNextBtn = true;
                 mViewControl.setVisibility(View.GONE);
                 mVideoView.start();
             }
@@ -175,6 +177,7 @@ public class PlayVideoActivity extends AppCompatActivity {
         mBtnReplay.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View view) {
+                isClickedNextBtn = true;
                 mViewControl.setVisibility(View.GONE);
                 if ( nChapterId == 7 && selCh7Id == 3 ) {
                     selCh7Id = 2;
@@ -185,7 +188,7 @@ public class PlayVideoActivity extends AppCompatActivity {
                 }
                 else if ( mVideoView.isPlaying() == false ) {
                     nCount = replayStartTime[nReplayIndex];
-                    mVideoView.seekTo(replayStartTime[nReplayIndex] * 1000 );
+                    mVideoView.seekTo(replayStartTime[nReplayIndex] * 1000 + 500);
                     mVideoView.start();
                 }
             }
@@ -282,25 +285,27 @@ public class PlayVideoActivity extends AppCompatActivity {
                 // TODO Auto-generated method stub
                 while(isActivityRunning) {
 
-//                    int playPosition = mVideoView.getCurrentPosition()/1000;
                     if ( mVideoView.isPlaying() == false ) {
-
                     }
                     else {
-                        for ( int i = 0; i< pauseTime.length; i++ ) {
-                            if ( nCount == pauseTime[i] ) {
-                                mHandler.sendEmptyMessage(0);
-                                break;
+                        if ( isClickedNextBtn == false ) {
+                            int playPosition = (mVideoView.getCurrentPosition()+500)/1000;
+                            for ( int i = 0; i< pauseTime.length; i++ ) {
+                                if ( playPosition == pauseTime[i] ) {
+                                    mHandler.sendEmptyMessage(0);
+                                    break;
+                                }
+                            }
+                            for ( int i = 0; i< replayTime.length; i++ ) {
+                                if ( playPosition == replayTime[i] ) {
+                                    nReplayIndex = i;
+                                    mHandler.sendEmptyMessage(2);
+                                    break;
+                                }
                             }
                         }
-                        for ( int i = 0; i< replayTime.length; i++ ) {
-                            if ( nCount == replayTime[i] ) {
-                                nReplayIndex = i;
-                                mHandler.sendEmptyMessage(2);
-                                break;
-                            }
-                        }
-                        nCount++;
+                        isClickedNextBtn = false;
+//                        nCount++;
                     }
                     try {
                         Thread.sleep(1000);
@@ -308,7 +313,6 @@ public class PlayVideoActivity extends AppCompatActivity {
                         // TODO Auto-generated catch block
                         e.printStackTrace();
                     }
-
                 }
             }
         });

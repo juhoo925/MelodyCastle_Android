@@ -32,7 +32,6 @@
         <activity
             android:name=".MainActivity"
             android:label="@string/app_name"
-            android:screenOrientation="portrait"
             android:theme="@style/Theme.MelodyCastle" />
         <activity
             android:name=".PlayKaraokeActivity"

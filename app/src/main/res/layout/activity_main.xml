@@ -44,23 +44,61 @@
                         android:layout_height="wrap_content"
                         android:gravity="center"
                         android:orientation="horizontal"
-                        android:padding="20dp">
+                        android:padding="20dp"
+                        android:baselineAligned="false">
 
-                        <ImageButton
-                            android:id="@+id/btnChapter1"
-                            android:layout_width="wrap_content"
+                        <LinearLayout
+                            android:layout_width="0dp"
+                            android:layout_weight="0.5"
                             android:layout_height="wrap_content"
-                            android:layout_marginRight="40dp"
-                            android:background="@drawable/btn_chapter1"
-                            tools:ignore="ContentDescription,RtlHardcoded,SpeakableTextPresentCheck,ImageContrastCheck" />
-
-                        <ImageButton
-                            android:id="@+id/btnChapter2"
-                            android:layout_width="wrap_content"
+                            android:orientation="vertical"
+                            android:gravity="center">
+                            <ImageButton
+                                android:id="@+id/btnChapter1"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:background="@drawable/btn_chapter1"
+                                tools:ignore="ContentDescription,RtlHardcoded,SpeakableTextPresentCheck,ImageContrastCheck" />
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:paddingLeft="20dp"
+                                android:paddingRight="20dp"
+                                android:paddingTop="10dp"
+                                android:paddingBottom="10dp"
+                                android:background="@color/blacktrans"
+                                android:textSize="24sp"
+                                android:text="Chapter1"
+                                android:textStyle="bold"
+                                android:textColor="@color/white"
+                                tools:ignore="HardcodedText" />
+                        </LinearLayout>
+                        <LinearLayout
+                            android:layout_width="0dp"
+                            android:layout_weight="0.5"
                             android:layout_height="wrap_content"
-                            android:layout_marginLeft="40dp"
-                            android:background="@drawable/btn_chapter2"
-                            tools:ignore="ContentDescription,ImageContrastCheck,RtlHardcoded,SpeakableTextPresentCheck" />
+                            android:orientation="vertical"
+                            android:gravity="center">
+                            <ImageButton
+                                android:id="@+id/btnChapter2"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:background="@drawable/btn_chapter2"
+                                tools:ignore="ContentDescription,ImageContrastCheck,RtlHardcoded,SpeakableTextPresentCheck" />
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:paddingLeft="20dp"
+                                android:paddingRight="20dp"
+                                android:paddingTop="10dp"
+                                android:paddingBottom="10dp"
+                                android:background="@color/blacktrans"
+                                android:textSize="24sp"
+                                android:text="Chapter2"
+                                android:textStyle="bold"
+                                android:textColor="@color/white"
+                                tools:ignore="HardcodedText" />
+                        </LinearLayout>
                     </LinearLayout>
 
                     <LinearLayout
@@ -68,23 +106,60 @@
                         android:layout_height="wrap_content"
                         android:gravity="center"
                         android:orientation="horizontal"
-                        android:padding="20dp">
-
-                        <ImageButton
-                            android:id="@+id/btnChapter3"
-                            android:layout_width="wrap_content"
+                        android:padding="20dp"
+                        android:baselineAligned="false">
+                        <LinearLayout
+                            android:layout_width="0dp"
+                            android:layout_weight="0.5"
                             android:layout_height="wrap_content"
-                            android:layout_marginRight="40dp"
-                            android:background="@drawable/btn_chapter3"
-                            tools:ignore="ContentDescription,RtlHardcoded,SpeakableTextPresentCheck" />
-
-                        <ImageButton
-                            android:id="@+id/btnChapter4"
-                            android:layout_width="wrap_content"
+                            android:orientation="vertical"
+                            android:gravity="center">
+                            <ImageButton
+                                android:id="@+id/btnChapter3"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:background="@drawable/btn_chapter3"
+                                tools:ignore="ContentDescription,RtlHardcoded,SpeakableTextPresentCheck" />
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:paddingLeft="20dp"
+                                android:paddingRight="20dp"
+                                android:paddingTop="10dp"
+                                android:paddingBottom="10dp"
+                                android:background="@color/blacktrans"
+                                android:textSize="24sp"
+                                android:text="Chapter3"
+                                android:textStyle="bold"
+                                android:textColor="@color/white"
+                                tools:ignore="HardcodedText" />
+                        </LinearLayout>
+                        <LinearLayout
+                            android:layout_width="0dp"
+                            android:layout_weight="0.5"
                             android:layout_height="wrap_content"
-                            android:layout_marginLeft="40dp"
-                            android:background="@drawable/btn_chapter4"
-                            tools:ignore="ContentDescription,ImageContrastCheck,RtlHardcoded,SpeakableTextPresentCheck" />
+                            android:orientation="vertical"
+                            android:gravity="center">
+                            <ImageButton
+                                android:id="@+id/btnChapter4"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:background="@drawable/btn_chapter4"
+                                tools:ignore="ContentDescription,ImageContrastCheck,RtlHardcoded,SpeakableTextPresentCheck" />
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:paddingLeft="20dp"
+                                android:paddingRight="20dp"
+                                android:paddingTop="10dp"
+                                android:paddingBottom="10dp"
+                                android:background="@color/blacktrans"
+                                android:textSize="24sp"
+                                android:text="Chapter4"
+                                android:textStyle="bold"
+                                android:textColor="@color/white"
+                                tools:ignore="HardcodedText" />
+                        </LinearLayout>
                     </LinearLayout>
 
                     <LinearLayout
@@ -92,25 +167,62 @@
                         android:layout_height="wrap_content"
                         android:gravity="center"
                         android:orientation="horizontal"
-                        android:padding="20dp">
-
-                        <ImageButton
-                            android:id="@+id/btnChapter5"
-                            android:layout_width="wrap_content"
+                        android:padding="20dp"
+                        android:baselineAligned="false">
+                        <LinearLayout
+                            android:layout_width="0dp"
+                            android:layout_weight="0.5"
                             android:layout_height="wrap_content"
-                            android:layout_marginEnd="40dp"
-                            android:background="@drawable/btn_chapter5"
-                            android:importantForAccessibility="no"
-                            tools:ignore="ImageContrastCheck" />
-
-                        <ImageButton
-                            android:id="@+id/btnChapter6"
-                            android:layout_width="wrap_content"
+                            android:orientation="vertical"
+                            android:gravity="center">
+                            <ImageButton
+                                android:id="@+id/btnChapter5"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:background="@drawable/btn_chapter5"
+                                android:importantForAccessibility="no"
+                                tools:ignore="ImageContrastCheck" />
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:paddingLeft="20dp"
+                                android:paddingRight="20dp"
+                                android:paddingTop="10dp"
+                                android:paddingBottom="10dp"
+                                android:background="@color/blacktrans"
+                                android:textSize="24sp"
+                                android:text="Chapter5"
+                                android:textStyle="bold"
+                                android:textColor="@color/white"
+                                tools:ignore="HardcodedText" />
+                        </LinearLayout>
+                        <LinearLayout
+                            android:layout_width="0dp"
+                            android:layout_weight="0.5"
                             android:layout_height="wrap_content"
-                            android:layout_marginStart="40dp"
-                            android:background="@drawable/btn_chapter6"
-                            android:importantForAccessibility="no"
-                            tools:ignore="ImageContrastCheck" />
+                            android:orientation="vertical"
+                            android:gravity="center">
+                            <ImageButton
+                                android:id="@+id/btnChapter6"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:background="@drawable/btn_chapter6"
+                                android:importantForAccessibility="no"
+                                tools:ignore="ImageContrastCheck" />
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:paddingLeft="20dp"
+                                android:paddingRight="20dp"
+                                android:paddingTop="10dp"
+                                android:paddingBottom="10dp"
+                                android:background="@color/blacktrans"
+                                android:textSize="24sp"
+                                android:text="Chapter6"
+                                android:textStyle="bold"
+                                android:textColor="@color/white"
+                                tools:ignore="HardcodedText" />
+                        </LinearLayout>
                     </LinearLayout>
 
                     <LinearLayout
@@ -118,23 +230,60 @@
                         android:layout_height="wrap_content"
                         android:gravity="center"
                         android:orientation="horizontal"
-                        android:padding="20dp">
-
-                        <ImageButton
-                            android:id="@+id/btnChapter7"
-                            android:layout_width="wrap_content"
+                        android:padding="20dp"
+                        android:baselineAligned="false">
+                        <LinearLayout
+                            android:layout_width="0dp"
+                            android:layout_weight="0.5"
                             android:layout_height="wrap_content"
-                            android:layout_marginEnd="40dp"
-                            android:background="@drawable/btn_chapter7"
-                            android:importantForAccessibility="no" />
-
-                        <ImageButton
-                            android:id="@+id/btnKaraoke"
-                            android:layout_width="wrap_content"
+                            android:orientation="vertical"
+                            android:gravity="center">
+                            <ImageButton
+                                android:id="@+id/btnChapter7"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:background="@drawable/btn_chapter7"
+                                android:importantForAccessibility="no" />
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:paddingLeft="20dp"
+                                android:paddingRight="20dp"
+                                android:paddingTop="10dp"
+                                android:paddingBottom="10dp"
+                                android:background="@color/blacktrans"
+                                android:textSize="24sp"
+                                android:text="Chapter7"
+                                android:textStyle="bold"
+                                android:textColor="@color/white"
+                                tools:ignore="HardcodedText" />
+                        </LinearLayout>
+                        <LinearLayout
+                            android:layout_width="0dp"
+                            android:layout_weight="0.5"
                             android:layout_height="wrap_content"
-                            android:layout_marginStart="40dp"
-                            android:background="@drawable/btn_karaoke"
-                            android:importantForAccessibility="no" />
+                            android:orientation="vertical"
+                            android:gravity="center">
+                            <ImageButton
+                                android:id="@+id/btnKaraoke"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:background="@drawable/btn_karaoke"
+                                android:importantForAccessibility="no" />
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:paddingLeft="20dp"
+                                android:paddingRight="20dp"
+                                android:paddingTop="10dp"
+                                android:paddingBottom="10dp"
+                                android:background="@color/blacktrans"
+                                android:textSize="24sp"
+                                android:text="Karaoke"
+                                android:textStyle="bold"
+                                android:textColor="@color/white"
+                                tools:ignore="HardcodedText" />
+                        </LinearLayout>
                     </LinearLayout>
                 </LinearLayout>
             </ScrollView>
@@ -151,14 +300,31 @@
                     android:layout_height="wrap_content"
                     android:layout_marginTop="20dp"
                     android:layout_marginBottom="20dp"
-                    android:gravity="center">
+                    android:gravity="center"
+                    android:orientation="vertical"
+                    tools:ignore="UselessParent">
                     <ImageButton
                         android:id="@+id/btnload"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:background="@drawable/btn_loadvideo"
                         android:importantForAccessibility="no"
+                        android:layout_marginRight="10dp"
                         tools:ignore="SpeakableTextPresentCheck" />
+                    <TextView
+                        android:layout_width="390dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="20dp"
+                        android:paddingLeft="20dp"
+                        android:paddingRight="20dp"
+                        android:paddingTop="10dp"
+                        android:paddingBottom="10dp"
+                        android:background="@color/colorTransparent"
+                        android:textSize="24sp"
+                        android:text="@string/load_video_desc"
+                        android:textStyle="bold"
+                        android:textColor="@color/white"
+                        tools:ignore="HardcodedText" />
                 </LinearLayout>
             </LinearLayout>
         </RelativeLayout>
